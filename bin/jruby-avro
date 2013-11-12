@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+ROOT_PATH = Dir.pwd
+$:.unshift ROOT_PATH + '/lib'
+
+require 'bundler/setup'
+
+require 'java'
+Dir.glob("#{ROOT_PATH}/jars/*.jar").map{ |jar| require jar }
+require 'jruby-avro'

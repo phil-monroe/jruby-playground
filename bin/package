@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Ruby Gems
+bundle install
+
+# Java Jars
+rm -rf jars/*.jar
+mvn clean package -DskipTests
+rm -rf target
