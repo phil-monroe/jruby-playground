@@ -1,4 +1,5 @@
 require 'jruby-avro/rack/status_app'
+require 'jruby-avro/rack/user_app'
 require 'rack/logger'
 require 'rack/commonlogger'
 
@@ -11,8 +12,12 @@ module JrubyAvro
 
       self.app = ::Rack::Builder.new do
         use ::Rack::CommonLogger
-        map "/status" do
+        map '/status' do
           run JrubyAvro::Rack::StatusApp.new
+        end
+
+        map '/user' do
+          run Rack::UserApp.new
         end
       end
 

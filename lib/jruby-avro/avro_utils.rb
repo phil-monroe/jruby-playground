@@ -27,20 +27,3 @@ module AvroUtils
   end
 end
 
-# builder = AvroSchemas::UserProfileRecord.new_builder
-# builder.set_first_name 'Phil'
-# builder.set_last_name  'Monroe'
-# builder.set_ids        []
-# builder.set_jobs       []
-# builder.set_educations []
-# builder.set_locations  []
-# builder.set_friend_ids []
-#
-# me = builder.build
-#
-# me_json = AvroUtils.avro_to_json me
-#
-# me2 = AvroUtils.json_to_avro me_json, AvroSchemas::UserProfileRecord.get_class_schema
-#
-# puts me.to_string
-# puts me2.to_string
