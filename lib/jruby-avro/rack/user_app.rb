@@ -1,9 +1,19 @@
 module JrubyAvro
   module Rack
     class UserApp < Sinatra::Base
+      helpers Sinatra::JSON
+      enable :show_exceptions
+
+      if development?
+        register Sinatra::Reloader
+        enable :reloader
+      end
+
       get '/phil' do
+        content_type 'application/json'
+
         phil = AvroSchemas::UserProfileRecord.new_builder
-        phil.set_first_name 'Phil'
+        phil.set_first_name 'Philip'
         phil.set_last_name  'Monroe'
         phil.set_first_job_start_date  Time.now.utc.iso8601
 
