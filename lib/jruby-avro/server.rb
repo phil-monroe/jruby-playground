@@ -1,15 +1,18 @@
 require 'jruby-avro/rack/status_app'
 require 'jruby-avro/rack/user_app'
+require 'jruby-avro/rack/request_logger'
 
 module JrubyAvro
   class Server
+    include Logging
+
     attr_accessor :app, :server, :host, :port
 
     def initialize
       self.host, self.port = '0.0.0.0', 8080
 
       self.app = ::Rack::Builder.new do
-        use ::Rack::CommonLogger
+        use Rack::RequestLogger
         map '/status' do
           run Rack::StatusApp
         end
@@ -24,12 +27,12 @@ module JrubyAvro
     end
 
     def start
-      puts "Starting server on #{host}:#{port}"
+      logger.info "Starting server on #{host}:#{port}"
       server.run
     end
 
     def stop
-      puts "Stopping Server"
+      logger.info "Stopping Server"
       server.stop(true)
     end
   end

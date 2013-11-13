@@ -1,6 +1,7 @@
 
 Bundler.require(:default)
 
+require 'jruby-avro/logging'
 require 'jruby-avro/avro_utils'
 require 'jruby-avro/server'
 require 'jruby-avro/worker'
@@ -8,6 +9,7 @@ require 'jruby-avro/worker'
 
 module JrubyAvro
   extend self
+  include Logging
 
   def run
     Signal.trap 'SIGINT',  method(:stop)
@@ -23,10 +25,12 @@ module JrubyAvro
 
 
   def stop
-    puts "Shutting Down Jruby-Avro"
+    logger.info "Shutting Down Jruby-Avro"
     @server.stop
     @worker.stop
   end
+
+
 
 end
 

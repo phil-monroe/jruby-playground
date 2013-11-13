@@ -1,23 +1,24 @@
 module JrubyAvro
   class Worker
+    include Logging
 
     def initialize
       @stop_work = false
     end
 
     def start
-      puts 'Starting Worker'
+      logger.info 'Starting Worker'
       @worker = Thread.new do
         loop do
           break if @stop_work
-          puts "Doin' Work"
+          logger.info "Doin' Work"
           sleep 5
         end
       end
     end
 
     def stop
-      puts "Stopping Worker"
+      logger.info "Stopping Worker"
       @stop_work = true
       join
     end
