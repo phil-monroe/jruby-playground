@@ -6,7 +6,7 @@ A sample app to play with JRuby, Dependencies, Avro, and a server/worker archite
 
 ``` bash
 # Fetch Dependencies
-./bin/package
+jbundle install
 
 # Start
 ./bin/jruby-avro
