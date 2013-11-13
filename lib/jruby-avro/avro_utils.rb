@@ -3,11 +3,11 @@ module AvroSchemas
 end
 
 module AvroUtils
-  ByteArrayOutputStream ||= java.io.ByteArrayOutputStream
-  EncoderFactory        ||= org.apache.avro.io.EncoderFactory
-  DecoderFactory        ||= org.apache.avro.io.DecoderFactory
-  SpecificDatumWriter   ||= org.apache.avro.specific.SpecificDatumWriter
-  SpecificDatumReader   ||= org.apache.avro.specific.SpecificDatumReader
+  java_import java.io.ByteArrayOutputStream
+  java_import org.apache.avro.io.EncoderFactory
+  java_import org.apache.avro.io.DecoderFactory
+  java_import org.apache.avro.specific.SpecificDatumWriter
+  java_import org.apache.avro.specific.SpecificDatumReader
 
   class << self
     def avro_to_json obj
