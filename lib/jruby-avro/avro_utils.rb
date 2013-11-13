@@ -27,3 +27,12 @@ module AvroUtils
   end
 end
 
+class Java::OrgApacheAvroSpecific::SpecificRecordBase
+  def to_json opts={}
+    AvroUtils.avro_to_json self
+  end
+
+  def self.from_json json
+    AvroUtils.json_to_avro json, self.get_class_schema
+  end
+end

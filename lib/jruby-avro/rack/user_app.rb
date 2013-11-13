@@ -23,7 +23,7 @@ module JrubyAvro
         phil.set_locations  []
         phil.set_friend_ids []
 
-        AvroUtils.avro_to_json phil.build
+        json phil.build
       end
     end
   end
